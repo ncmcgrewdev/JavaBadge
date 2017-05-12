@@ -53,6 +53,11 @@ public class Main {
         return result;
     }
 
+    /**
+     * Write an application to read a file with 10k lines of text,
+     * and output another file with the lines in sorted order
+     */
+
     public static void sortFile(){
 
         String[] lineArray = readFileToStringArray("lorem.txt");
@@ -61,13 +66,15 @@ public class Main {
 
         Arrays.sort(lineArray);
 
-        String[] reverseLines = new String[lineArray.length];
+        writeToFile("loremAscending.txt", lineArray);
 
+        /**
+         * output another file with the lines in reverse sorted order
+         */
+        String[] reverseLines = new String[lineArray.length];
         for (int i = lineArray.length; i > 0 ; i--){
             reverseLines[lineArray.length - i] = lineArray[i - 1];
         }
-
-        writeToFile("loremAscending.txt", lineArray);
 
         writeToFile("loremDescending.txt",reverseLines);
     }
