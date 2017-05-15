@@ -1,5 +1,6 @@
 package com.mycompany.app;
 
+import com.google.gson.Gson;
 import com.mycompany.app.XML_models.Note;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -39,6 +40,28 @@ public class StaticFileReader {
         }
 
         writer.close();
+    }
+
+    public static Note getGSON(String filename){
+        try {
+            String file = readFileToMemory(filename);
+            Gson gson = new Gson();
+
+            return gson.fromJson(file, Note.class);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void toJsonFile(Note note){
+        Gson gson = new Gson();
+        try {
+            writeToFile("note.json", gson.toJson(note));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Note getXML(String filename){

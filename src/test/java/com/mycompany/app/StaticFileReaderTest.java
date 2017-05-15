@@ -10,7 +10,20 @@ import junit.framework.TestCase;
 public class StaticFileReaderTest extends TestCase {
     public void testGetXML(){
         Note note = new Note();
-        note.setAllTheThings("Tove", "Jani","Reminder","Don't forget me this weekend!");
+        note.setAllTheThings("Tove", "Jani","Reminder","Don\u0027t forget me this weekend!");
         assertEquals(StaticFileReader.getXML("sample.xml"), note);
     }
+
+    public void testGetGson(){
+        Note note = new Note();
+        note.setAllTheThings("Tove", "Jani","Reminder","Don't forget me this weekend!");
+        assertEquals(note, StaticFileReader.getGSON("sample.json"));
+    }
+
+    public void testJsonToFile(){
+        Note note = new Note();
+        note.setAllTheThings("Tove", "Jani","Reminder","Don't forget me this weekend!");
+        StaticFileReader.toJsonFile(note);
+    }
+
 }
