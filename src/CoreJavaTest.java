@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 
 /**
- * Created by ncmcgrew on 5/15/2017.
+ * Created  on 5/15/2017.
  */
 public class CoreJavaTest {
     @Test
