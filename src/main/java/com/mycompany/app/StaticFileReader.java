@@ -1,5 +1,9 @@
 package com.mycompany.app;
 
+import com.mycompany.app.XML_models.Note;
+import org.simpleframework.xml.Serializer;
+import org.simpleframework.xml.core.Persister;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -20,6 +24,8 @@ public class StaticFileReader {
             result += scan.nextLine();
         }
 
+        scan.close();
+
         return result;
     }
 
@@ -33,5 +39,32 @@ public class StaticFileReader {
         }
 
         writer.close();
+    }
+
+    public static Note getXML(String filename){
+        try{
+            String file = readFileToMemory(filename);
+            System.out.println(file);
+            try{
+                Note note = readXMLfromString(file);
+                return note;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Note readXMLfromString(String xml) throws Exception {
+        Serializer serializer = new Persister();
+
+        return serializer.read(Note.class, xml);
+    }
+
+    public static void writeXMLtoFile(Note note){
+
     }
 }
