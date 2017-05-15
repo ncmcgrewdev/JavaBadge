@@ -1,23 +1,20 @@
 package com.mycompany.app;
 
-import org.junit.jupiter.api.Test;
+import junit.framework.TestCase;
 
 /**
  * Created by ncmcgrew on 5/15/2017.
  */
-public class CoreJavaTest {
-    @Test
-    public void ascendingFile() throws Exception {
+public class CoreJavaTest extends TestCase {
+    public void testAscendingFile() throws Exception {
         CoreJava.ascendingFile();
     }
 
-    @Test
-    public void descendingFile() throws Exception {
+    public void testDescendingFile() throws Exception {
         CoreJava.descendingFile();
     }
 
-    @Test
-    public void maxString() throws Exception {
+    public void testMaxString() throws Exception {
         CoreJava.maxString();
     }
 }
