@@ -1,5 +1,6 @@
 package com.mycompany.app;
 
+import com.mycompany.app.core.CoreJava;
 import junit.framework.TestCase;
 
 /**

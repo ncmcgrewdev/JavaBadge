@@ -1,4 +1,4 @@
-package com.mycompany.app.XML_models;
+package com.mycompany.app;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
  * Created by ncmcgrew on 5/15/2017.
  */
 @Root
-public class Note {
+public class BasicNote {
 
     public void setAllTheThings(String to, String from, String heading, String body) {
         this.to = to;
@@ -33,7 +33,7 @@ public class Note {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Note note = (Note) o;
+        BasicNote note = (BasicNote) o;
 
         if (to != null ? !to.equals(note.to) : note.to != null) return false;
         if (from != null ? !from.equals(note.from) : note.from != null) return false;

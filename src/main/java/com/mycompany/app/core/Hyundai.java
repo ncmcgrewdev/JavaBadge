@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package com.mycompany.app.core;
 
 public class Hyundai {
     public enum Model {

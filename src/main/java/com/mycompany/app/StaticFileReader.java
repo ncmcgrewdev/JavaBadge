@@ -1,7 +1,6 @@
 package com.mycompany.app;
 
 import com.google.gson.Gson;
-import com.mycompany.app.XML_models.Note;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -42,12 +41,12 @@ public class StaticFileReader {
         writer.close();
     }
 
-    public static Note getGSON(String filename){
+    public static BasicNote getGSON(String filename){
         try {
             String file = readFileToMemory(filename);
             Gson gson = new Gson();
 
-            return gson.fromJson(file, Note.class);
+            return gson.fromJson(file, BasicNote.class);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -55,7 +54,7 @@ public class StaticFileReader {
         }
     }
 
-    public static void toJsonFile(Note note){
+    public static void toJsonFile(BasicNote note){
         Gson gson = new Gson();
         try {
             writeToFile("note.json", gson.toJson(note));
@@ -64,12 +63,12 @@ public class StaticFileReader {
         }
     }
 
-    public static Note getXML(String filename){
+    public static BasicNote getXML(String filename){
         try{
             String file = readFileToMemory(filename);
             System.out.println(file);
             try{
-                Note note = readXMLfromString(file);
+                BasicNote note = readXMLfromString(file);
                 return note;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -81,13 +80,13 @@ public class StaticFileReader {
         }
     }
 
-    public static Note readXMLfromString(String xml) throws Exception {
+    public static BasicNote readXMLfromString(String xml) throws Exception {
         Serializer serializer = new Persister();
 
-        return serializer.read(Note.class, xml);
+        return serializer.read(BasicNote.class, xml);
     }
 
-    public static void writeXMLtoFile(Note note){
+    public static void writeXMLtoFile(BasicNote note){
 
     }
 }
