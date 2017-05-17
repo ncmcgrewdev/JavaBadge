@@ -49,4 +49,6 @@ public class BasicNote {
         result = 31 * result + (body != null ? body.hashCode() : 0);
         return result;
     }
+
+
 }

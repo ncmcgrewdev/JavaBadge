@@ -1,6 +1,7 @@
 package com.mycompany.app;
 
 import com.google.gson.Gson;
+import org.apache.log4j.Logger;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -14,19 +15,28 @@ import java.util.Scanner;
  */
 public class StaticFileReader {
 
+    private StaticFileReader() {
+        /* Utility classes, which are a collection of static members, are not meant to be instantiated.
+           Java adds an implicit public constructor to every class which does not define at least one explicitly.
+           Hence, at least one non-public constructor should be defined.
+         */
+    }
+
+    static final Logger logger = Logger.getLogger(StaticFileReader.class);
+
     public static String readFileToMemory(String filename) throws FileNotFoundException {
         File file = new File(filename);
 
         Scanner scan = new Scanner(file);
-        String result = "";
+        StringBuilder builder = new StringBuilder();
 
-        while(scan.hasNextLine()){
-            result += scan.nextLine();
+        while (scan.hasNextLine()) {
+            builder.append(scan.nextLine());
         }
 
         scan.close();
 
-        return result;
+        return builder.toString();
     }
 
     public static void writeToFile(String filename, String content) throws FileNotFoundException {
@@ -34,14 +44,14 @@ public class StaticFileReader {
         PrintWriter writer = new PrintWriter(file);
         String[] lines = content.split("\n");
 
-        for(String line : lines){
+        for (String line : lines) {
             writer.println(line);
         }
 
         writer.close();
     }
 
-    public static BasicNote getGSON(String filename){
+    public static BasicNote getGSON(String filename) {
         try {
             String file = readFileToMemory(filename);
             Gson gson = new Gson();
@@ -49,44 +59,45 @@ public class StaticFileReader {
             return gson.fromJson(file, BasicNote.class);
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error(e);
             return null;
         }
     }
 
-    public static void toJsonFile(BasicNote note){
+    public static void toJsonFile(BasicNote note) {
         Gson gson = new Gson();
         try {
             writeToFile("note.json", gson.toJson(note));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
-    public static BasicNote getXML(String filename){
-        try{
+    public static BasicNote getXML(String filename) {
+        try {
             String file = readFileToMemory(filename);
-            System.out.println(file);
-            try{
-                BasicNote note = readXMLfromString(file);
-                return note;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
+            return readXMLfromString(file);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error(e);
             return null;
         }
     }
 
-    public static BasicNote readXMLfromString(String xml) throws Exception {
+    public static BasicNote readXMLfromString(String xml) {
         Serializer serializer = new Persister();
+        BasicNote result;
 
-        return serializer.read(BasicNote.class, xml);
+        try {
+            result =  serializer.read(BasicNote.class, xml);
+        } catch (Exception e) {
+            logger.error(e);
+            result =  null;
+        }
+
+        return result;
     }
 
-    public static void writeXMLtoFile(BasicNote note){
-
+    public static void writeXMLtoFile(BasicNote note) {
+        throw new UnsupportedOperationException();
     }
 }

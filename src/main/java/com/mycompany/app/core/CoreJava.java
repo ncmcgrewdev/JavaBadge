@@ -1,5 +1,7 @@
 package com.mycompany.app.core;
 
+import org.apache.log4j.Logger;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -12,6 +14,12 @@ import java.util.Scanner;
  * Created by ncmcgrew on 5/15/2017.
  */
 public class CoreJava {
+
+    private CoreJava() {
+    }
+
+    static final Logger logger = Logger.getLogger(CoreJava.class);
+
     /**
      * "Write an application to find out how many total characters
      * can be held in a list of strings before you run out of memory"
@@ -20,23 +28,24 @@ public class CoreJava {
         List<String> str_list = new ArrayList<>(20);
         long freeMem = Runtime.getRuntime().freeMemory();
         long totalMem = Runtime.getRuntime().totalMemory();
-        System.out.println("free memory: "+freeMem);
-        System.out.println("total memory: "+totalMem);
+        logger.info("free memory: "+freeMem);
+        logger.info("total memory: "+totalMem);
 
-
-        while(true){
+        long i = 0;
+        while(i < 2147483647){
             // generate a ridiculously huge string
             String foo = "a";
             while(foo.length() < Integer.MAX_VALUE){
                 // cap string length at a high value to allow for more characters later
                 if(foo.getBytes().length > freeMem/2){
-                    System.out.println(foo.length());
+                    logger.info(foo.length());
                     break;
                 }
                 foo += foo;
             }
             str_list.add(foo);
-            System.out.println(getnumBytesInList(str_list));
+            logger.info(getnumBytesInList(str_list));
+            i++;
         }
     }
 
@@ -65,19 +74,21 @@ public class CoreJava {
     public static void descendingFile(){
         String[] lineArray = getSortedFile();
 
-        String[] reverseLines = new String[lineArray.length];
-        for (int i = lineArray.length; i > 0 ; i--){
-            reverseLines[lineArray.length - i] = lineArray[i - 1];
-        }
+        if(lineArray != null){
+            String[] reverseLines = new String[lineArray.length];
+            for (int i = lineArray.length; i > 0 ; i--){
+                reverseLines[lineArray.length - i] = lineArray[i - 1];
+            }
 
-        writeToFile("loremDescending.txt",reverseLines);
+            writeToFile("loremDescending.txt",reverseLines);
+        }
     }
 
     public static String[] getSortedFile(){
 
         String[] lineArray = readFileToStringArray("lorem.txt");
 
-        if(lineArray == null) return null; // unchecked exception handling
+        if(lineArray == null) return new String[]{}; // unchecked exception handling
 
         Arrays.sort(lineArray);
 
@@ -97,8 +108,8 @@ public class CoreJava {
             return lines.toArray(result);
 
         } catch (FileNotFoundException e) { // checked exception handling
-            e.printStackTrace();
-            return null;
+            logger.error(e);
+            return new String[]{};
         }
     }
 
@@ -110,7 +121,7 @@ public class CoreJava {
 
             writer.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 }
