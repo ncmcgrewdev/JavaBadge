@@ -23,24 +23,12 @@ public class CoreJava {
         System.out.println("free memory: "+freeMem);
         System.out.println("total memory: "+totalMem);
 
-        //generate a ridiculously huge string
-//        String foo = "a";
-//        while(foo.length() < Integer.MAX_VALUE){
-//            if(foo.getBytes().length > freeMem/2){
-//                System.out.println(foo.length());
-//                break;
-//            }
-//            foo += foo;
-//        }
-//
-//        str_list.add(foo);
-//
-//        StringBuilder foobar = new StringBuilder(foo);
 
         while(true){
-//            str_list.add(new String(foo)); // make sure you're allocating memory for a new string each time instead of just adding a pointer
+            // generate a ridiculously huge string
             String foo = "a";
             while(foo.length() < Integer.MAX_VALUE){
+                // cap string length at a high value to allow for more characters later
                 if(foo.getBytes().length > freeMem/2){
                     System.out.println(foo.length());
                     break;
