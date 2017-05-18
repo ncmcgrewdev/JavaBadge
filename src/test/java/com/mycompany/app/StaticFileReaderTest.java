@@ -1,5 +1,6 @@
 package com.mycompany.app;
 
+import com.mycompany.app.models.BasicNote;
 import junit.framework.TestCase;
 import org.apache.log4j.BasicConfigurator;
 
@@ -9,22 +10,19 @@ import org.apache.log4j.BasicConfigurator;
 public class StaticFileReaderTest extends TestCase {
     public void testGetXML(){
         BasicConfigurator.configure();
-        BasicNote note = new BasicNote();
-        note.setAllTheThings("Tove", "Jani","Reminder","Don\u0027t forget me this weekend!");
+        BasicNote note = new BasicNote("Tove", "Jani","Reminder","Don\u0027t forget me this weekend!");
         assertEquals(StaticFileReader.getXML("sample.xml"), note);
     }
 
     public void testGetGson(){
         BasicConfigurator.configure();
-        BasicNote note = new BasicNote();
-        note.setAllTheThings("Tove", "Jani","Reminder","Don't forget me this weekend!");
+        BasicNote note = new BasicNote("Tove", "Jani","Reminder","Don't forget me this weekend!");
         assertEquals(note, StaticFileReader.getGSON("sample.json"));
     }
 
     public void testJsonToFile(){
         BasicConfigurator.configure();
-        BasicNote note = new BasicNote();
-        note.setAllTheThings("Tove", "Jani","Reminder","Don't forget me this weekend!");
+        BasicNote note = new BasicNote("Tove", "Jani","Reminder","Don't forget me this weekend!");
         StaticFileReader.toJsonFile(note);
     }
 
