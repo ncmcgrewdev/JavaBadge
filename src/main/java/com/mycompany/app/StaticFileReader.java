@@ -70,7 +70,7 @@ public class StaticFileReader {
         try {
             writeToFile("note.json", gson.toJson(note));
         } catch (FileNotFoundException e) {
-            logger.error(e);
+            note.getLogger().error(e);
         }
     }
 
