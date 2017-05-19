@@ -1,3 +1,5 @@
+package com.mycompany.app;
+
 /**
  * Created by ncmcgrew on 5/19/2017.
  */
