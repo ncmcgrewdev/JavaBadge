@@ -1,7 +1,7 @@
-package com.mycompany.app.models.inheritance;
+package com.mycompany.app.commonLogic.models.inheritance;
 
-import com.mycompany.app.StaticFileReader;
-import com.mycompany.app.models.BasicNote;
+import com.mycompany.app.commonLogic.models.StaticFileReader;
+import com.mycompany.app.commonLogic.models.BasicNote;
 
 import java.io.FileNotFoundException;
 

@@ -1,4 +1,4 @@
-package com.mycompany.app.models.inheritance;
+package com.mycompany.app.commonLogic.models.inheritance;
 
 import com.google.gson.Gson;
 

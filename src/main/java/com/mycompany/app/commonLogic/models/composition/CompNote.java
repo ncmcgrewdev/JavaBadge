@@ -1,10 +1,8 @@
-package com.mycompany.app.models.composition;
+package com.mycompany.app.commonLogic.models.composition;
 
 import com.google.gson.Gson;
-import com.mycompany.app.StaticFileReader;
-import com.mycompany.app.models.BasicNote;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
+import com.mycompany.app.commonLogic.models.StaticFileReader;
+import com.mycompany.app.commonLogic.models.BasicNote;
 
 import java.io.FileNotFoundException;
 

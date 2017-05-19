@@ -1,4 +1,4 @@
-package com.mycompany.app.models;
+package com.mycompany.app.commonLogic.models;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;

@@ -1,6 +1,7 @@
 package com.mycompany.app;
 
-import com.mycompany.app.models.BasicNote;
+import com.mycompany.app.commonLogic.models.BasicNote;
+import com.mycompany.app.commonLogic.models.StaticFileReader;
 import junit.framework.TestCase;
 import org.apache.log4j.BasicConfigurator;
 

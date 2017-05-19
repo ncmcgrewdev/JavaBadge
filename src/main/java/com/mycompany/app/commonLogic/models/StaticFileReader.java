@@ -1,7 +1,6 @@
-package com.mycompany.app;
+package com.mycompany.app.commonLogic.models;
 
 import com.google.gson.Gson;
-import com.mycompany.app.models.BasicNote;
 import org.apache.log4j.Logger;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
