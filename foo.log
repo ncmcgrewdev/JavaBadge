@@ -1,0 +1,4 @@
+timestamp=2017-05-22 16:35:03.547 level=warning message=foo value=10 warning=BAR
+timestamp=2017-05-22 16:35:03.547 level=debug message=foo value=10 info=cantaloupe?
+timestamp=2017-05-22 16:35:03.547 level=error message=foo value=10 error=BAR!!!
+timestamp=2017-05-22 16:35:03.547 level=info message=foo value=10 info=bar

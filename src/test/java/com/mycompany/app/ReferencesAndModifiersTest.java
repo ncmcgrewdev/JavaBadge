@@ -3,7 +3,6 @@ package com.mycompany.app;
 import junit.framework.TestCase;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.junit.jupiter.api.BeforeAll;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +12,6 @@ import java.util.List;
  */
 public class ReferencesAndModifiersTest extends TestCase {
     Logger logger = Logger.getLogger(ReferencesAndModifiersTest.class);
-
-    @BeforeAll
-    public static void configureLogger(){
-
-    }
 
     public void testFoo() throws Exception {
 
