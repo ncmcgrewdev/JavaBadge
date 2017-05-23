@@ -10,9 +10,6 @@ public class BadEcapsulation {
     private String flip;
     private String flap;
 
-    public BadEcapsulation() {
-    }
-
     public String getFoo() {
         return foo;
     }

@@ -7,13 +7,19 @@ import java.util.List;
  */
 public class ReferencesAndModifiers {
 
+    private static final String SECRET = "No, Luke, I am your father!";
+    private static final String SEMI_SECRET = "Luke and Leia are siblings";
+
+    private ReferencesAndModifiers() {
+    }
+
     public static void foo(List<String> list, int num, final String str){
         list.set(0, "foo!");
-        num +=10;
+        num += 10;
     }
 
     private static String getSecretString(){
-        return "No, Luke, I am your father!";
+        return SECRET;
     }
 
     public static String publishSecret(){
@@ -21,6 +27,6 @@ public class ReferencesAndModifiers {
     }
 
     protected static String getSemiSecretString(){
-        return "Luke and Leia are siblings";
+        return SEMI_SECRET;
     }
 }

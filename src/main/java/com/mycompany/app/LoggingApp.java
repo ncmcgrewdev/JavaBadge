@@ -14,14 +14,12 @@ public class LoggingApp {
 
     private int val;
     private String msg;
-    private double misc;
     Timestamp timestamp;
 
     private LoggingApp(LoggingAppBuilder builder) {
         timestamp = new Timestamp(System.currentTimeMillis());
         this.val = builder.val;
         this.msg = builder.msg;
-        this.misc = builder.misc;
     }
 
     public void logInfo(String info){
@@ -48,7 +46,6 @@ public class LoggingApp {
     public static class LoggingAppBuilder{
         private int val;
         private String msg;
-        private double misc;
 
         public LoggingAppBuilder(int val){
             this.val = val;
@@ -59,11 +56,6 @@ public class LoggingApp {
             return this;
         }
 
-        public LoggingAppBuilder misc(double misc){
-            this.misc = misc;
-            return this;
-        }
-
         public LoggingApp build(){
             return new LoggingApp(this);
         }
@@ -71,6 +63,9 @@ public class LoggingApp {
 
     private static class LogSingleton {
         private static Logger logger;
+
+        private LogSingleton(){
+        }
 
         private static Logger getLogger(){
             if(logger == null){

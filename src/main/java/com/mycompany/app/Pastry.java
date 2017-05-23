@@ -5,8 +5,10 @@ package com.mycompany.app;
  */
 public class Pastry {
 
+    private String DESCRIPTIOIN ="A delightful treat that comes in a multitude of varieties";
+
     public String getDescription(){
-        return "A delightful treat that comes in a multitude of varieties";
+        return DESCRIPTIOIN;
     }
 
     @Override

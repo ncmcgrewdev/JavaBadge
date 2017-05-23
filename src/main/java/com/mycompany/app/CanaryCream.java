@@ -5,6 +5,7 @@ package com.mycompany.app;
  */
 public class CanaryCream extends Pastry {
 
+    @Override
     public String getDescription(){
         return "A prank pastry that causes one to shed yellow feathers on ingesting.  Give to friends and enemies alike!";
     }
